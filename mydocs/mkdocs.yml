@@ -1,1 +1,44 @@
-site_name: My Docs
+site_name: golang开发知识整理
+site_author: 'setcreed'
+repo_name: 'GoGo'
+repo_url: 'https://github.com/setcreed/GoGo'
+# theme: readthedocs
+
+# Configuration, https://squidfunk.github.io/mkdocs-material/
+theme:
+  name: 'material'
+  palette:
+    primary: 'black'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+
+
+extra_javascript:
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+extra:
+  # disqus: 'setcreed'
+  social:
+    - type: 'github'
+      link: 'https://github.com/setcreed'
+
+markdown_extensions:
+  - admonition
+  - mdx_math:
+      enable_dollar_delimiter: true  #for use of inline $..$
+  - codehilite: # https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
+      linenums: true
+      guess_lang: true
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+
+copyright: 'Copyright &copy; 2019 - 2020 setcreed'
+
+nav:
+- 简介: 'index.md'
+- go基础:
+    - '00 golang简介': 'basics/00golang简介/hello_go.md'
+    - '01 go变量类型': 'basics/01go_basic_type/go_basic_type.md'
