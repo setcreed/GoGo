@@ -39,6 +39,9 @@ copyright: 'Copyright &copy; 2019 - 2020 setcreed'
 
 nav:
 - 简介: 'index.md'
-- go基础:
-    - '00 golang简介': 'basics/00golang简介/hello_go.md'
-    - '01 go变量类型': 'basics/01go_basic_type/go_basic_type.md'
+- Go基础:
+    - '00 Golang简介': 'basics/00golang简介/hello_go.md'
+    - '01 Go基础类型': 'basics/01go_basic_type/go_basic_type.md'
+    - '02 Go的控制流程': 'basics/02go_control/go_control.md'
+    - '03 Go的函数': 'basics/03go_func/go_func.md'
+    - '04 Go的包': 'basics/04go_bao/go_bao.md'
