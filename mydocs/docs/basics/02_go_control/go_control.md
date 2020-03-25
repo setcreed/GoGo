@@ -112,3 +112,70 @@ func main() {
 }
 ```
 
+
+
+## switch / case
+
+与C语言中的switch类似，但是go中改善了许多，不需要在每一个case中加上break，go语言的switch语法如下：
+
+```go
+switch var1 {
+    case val1:
+        ...
+    case val2:
+        ...
+    default:
+        ...
+}
+```
+
+变量 var1 可以是任何类型，而 val1 和 val2 则可以是同类型的任意值。类型不被局限于常量或整数，但必须是相同的类型；或者最终结果为相同类型的表达式。
+
+多个条件使用 `&&`（与）和 `||`（或）
+
+注意：
+
+- default语句 是可选的，表示 如果上面的条件都不符合，就给一个默认行为
+- fallthrough  表示 无条件执行下一个case中的代码（用的很少）
+
+小例子1：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var day int = 3
+	switch day {
+	case 0,6:
+		fmt.Println("周末")
+	case 1,2,3,4,5:
+		fmt.Println("工作日")
+	default:
+		fmt.Println("不合法")
+	}
+}
+// 工作日
+```
+
+例子2：
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a, b int = 10, 20
+	a, b = b, a
+	switch  {
+	case a < b:      // case后面可以是表达式
+		fmt.Println("a < b")
+	case a > b:
+		fmt.Println("a > b")
+
+	}
+}
+```
+
