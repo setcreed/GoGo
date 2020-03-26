@@ -47,3 +47,7 @@ nav:
     - '04 Go的映射': 'basics/04_map/map.md'
     - '05 Go的函数': 'basics/05_go_func/go_func.md'
     - '06 Go的包': 'basics/06_go_bao/go_bao.md'
+    - '07 Go的指针': 'basics/07_go_pointer/go_pointer.md'
+    - '08 GO的结构体': 'basics/08_go_struct/go_struct.md'
+    - '09 Go的方法': 'basics/09_go_method/go_method.md'
+    - '10 Go的接口': 'basics/10_go_interface/go_interface.md'
