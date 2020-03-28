@@ -38,7 +38,7 @@
     
     
       
-        <title>02 Go的控制流程 - golang开发知识整理</title>
+        <title>11 Go的协程 - golang开发知识整理</title>
       
     
     
@@ -113,7 +113,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                02 Go的控制流程
+                11 Go的协程
               
             </span>
           
@@ -279,70 +279,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        02 Go的控制流程
-      </label>
-    
-    <a href="./" title="02 Go的控制流程" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../02_go_control/go_control/" title="02 Go的控制流程" class="md-nav__link">
       02 Go的控制流程
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#go_1" class="md-nav__link">
-    Go的控制流程语句
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if" class="md-nav__link">
-    if 语句
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    循环
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#switch-case" class="md-nav__link">
-    switch / case
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -446,11 +387,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../11_go_routine/go_routine/" title="11 Go的协程" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        11 Go的协程
+      </label>
+    
+    <a href="./" title="11 Go的协程" class="md-nav__link md-nav__link--active">
       11 Go的协程
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#go_1" class="md-nav__link">
+    go协程对比线程的优点
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_2" class="md-nav__link">
+    实现一个简单的Go协程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go_3" class="md-nav__link">
+    启动多个Go协程
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -505,28 +498,21 @@
       
         <li class="md-nav__item">
   <a href="#go_1" class="md-nav__link">
-    Go的控制流程语句
+    go协程对比线程的优点
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#if" class="md-nav__link">
-    if 语句
+  <a href="#go_2" class="md-nav__link">
+    实现一个简单的Go协程
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    循环
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#switch-case" class="md-nav__link">
-    switch / case
+  <a href="#go_3" class="md-nav__link">
+    启动多个Go协程
   </a>
   
 </li>
@@ -547,66 +533,22 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/setcreed/GoGo/edit/master/docs/basics/02_go_control/go_control.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/setcreed/GoGo/edit/master/docs/basics/11_go_routine/go_routine.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="go">Go过程式编程<a class="headerlink" href="#go" title="Permanent link">&para;</a></h1>
-<h2 id="go_1">Go的控制流程语句<a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h2>
-<p>和很多编程语言类似，Go也提供了if/else等 控制流程语句。</p>
-<h2 id="if">if 语句<a class="headerlink" href="#if" title="Permanent link">&para;</a></h2>
-<p>if/else 使用起来和 python 的非常像，go的语法如下：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
-    <span class="k">if</span> <span class="nx">条件</span> <span class="p">{</span>
-        <span class="c1">//符合上面条件的执行</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="nx">条件</span><span class="p">{</span>
-        <span class="c1">//符合上面条件的执行</span>
-    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-        <span class="c1">// 不符合上面的条件执行这个</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>举例说明：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">age</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">30</span>
-    <span class="k">if</span> <span class="nx">age</span> <span class="p">&lt;</span> <span class="mi">18</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;未成年&quot;</span><span class="p">)</span>
-    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;成年&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>需要注意：</p>
-<p>if 条件只能是一个 bool 值或者返回 bool 值的表达式，而不能是int</p>
-<h2 id="_1">循环<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>与其他语言不同的是，go只提供了for关键字来实现循环，没有while。</p>
-<p>语法如下：</p>
+                <h1 id="go">Go的协程<a class="headerlink" href="#go" title="Permanent link">&para;</a></h1>
+<p>Go的协程可以看做是一个轻量级的线程，创建一个Go协程的成本很小。</p>
+<h2 id="go_1">go协程对比线程的优点<a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>与线程相比，Go协程的开销非常小。Go协程的堆栈大小只有几kb，它可以根据应用程序的需要而增长和缩小，而线程必须指定堆栈的大小，并且堆栈的大小是固定的。</li>
+<li>Go协程被多路复用到较少的OS线程。在一个程序中数千个Go协程可能只运行在一个线程中。如果该线程中的任何一个Go协程阻塞（比如等待用户输入），那么Go会创建一个新的OS线程并将其余的Go协程移动到这个新的OS线程。所有这些操作都是 runtime 来完成的，而我们程序员不必关心这些复杂的细节，只需要利用 Go 提供的简洁的 API 来处理并发就可以了。</li>
+<li>Go 协程之间通过信道（channel）进行通信。信道可以防止多个协程访问共享内存时发生竟险（race condition）。信道可以想象成多个协程之间通信的管道。</li>
+</ul>
+<p><img alt="" src="../go_routine1.png" /></p>
+<p>go的协程：</p>
+<p><img alt="" src="../go_routine2.png" /></p>
+<h2 id="go_2">实现一个简单的Go协程<a class="headerlink" href="#go_2" title="Permanent link">&para;</a></h2>
+<p>实现Go的协程只需要在调用函数或方法时，前面加上关键字<code>go</code>，就可以让go并发的运行。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -620,24 +562,39 @@
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="c1">// 常规用法，和其他语言类似</span>
-<span class="k">for</span> <span class="nx">初始化</span><span class="p">;</span> <span class="nx">条件</span><span class="p">;</span> <span class="nx">自增自减</span> <span class="p">{</span>
-  <span class="nx">循环体的内容</span>
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;我是test函数&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;我是main函数&quot;</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nx">test</span><span class="p">()</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">// 无限循环，block 会被一直重复执行</span>
-<span class="k">for</span> <span class="p">{</span>
-  <span class="nx">block</span>
-<span class="p">}</span>
-
-<span class="c1">// 实现while循环，block 一直执行直到 表达式为false</span>
-<span class="k">for</span> <span class="nx">条件</span> <span class="p">{</span>
-  <span class="nx">block</span>
-<span class="p">}</span>
+<span class="cm">/*</span>
+<span class="cm">输出结果：</span>
+<span class="cm">我是main函数</span>
+<span class="cm">我是test函数</span>
+<span class="cm">*/</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>几个例子</p>
+<p>在Go的主协程中使用休眠<code>time.Sleep</code>，等待其他协程执行完毕。</p>
+<h2 id="go_3">启动多个Go协程<a class="headerlink" href="#go_3" title="Permanent link">&para;</a></h2>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -661,152 +618,34 @@
 21
 22
 23
-24</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
+24
+25
+26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">i</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="p">;</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nx">numbers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Microsecond</span> <span class="o">*</span> <span class="mi">500</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-
-
-
-<span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-        <span class="nx">i</span><span class="o">++</span>
+<span class="kd">func</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="sc">&#39;f&#39;</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Microsecond</span> <span class="o">*</span> <span class="mi">600</span><span class="p">)</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%c &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>九九乘法表：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="p">&lt;</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
-            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%dx%d=%d\t&quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="o">*</span><span class="nx">j</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
-    <span class="p">}</span>
+    <span class="k">go</span> <span class="nx">numbers</span><span class="p">()</span>
+    <span class="k">go</span> <span class="nx">test</span><span class="p">()</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;main函数&quot;</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-
-<h2 id="switch-case">switch / case<a class="headerlink" href="#switch-case" title="Permanent link">&para;</a></h2>
-<p>与C语言中的switch类似，但是go中改善了许多，不需要在每一个case中加上break，go语言的switch语法如下：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">switch</span> <span class="nx">var1</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">val1</span><span class="p">:</span>
-        <span class="o">...</span>
-    <span class="k">case</span> <span class="nx">val2</span><span class="p">:</span>
-        <span class="o">...</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="o">...</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>变量 var1 可以是任何类型，而 val1 和 val2 则可以是同类型的任意值。类型不被局限于常量或整数，但必须是相同的类型；或者最终结果为相同类型的表达式。</p>
-<p>多个条件使用 <code>&amp;&amp;</code>（与）和 <code>||</code>（或）</p>
-<p>注意：</p>
-<ul>
-<li>default语句 是可选的，表示 如果上面的条件都不符合，就给一个默认行为</li>
-<li>fallthrough  表示 无条件执行下一个case中的代码（用的很少）</li>
-</ul>
-<p>小例子1：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">day</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">3</span>
-    <span class="k">switch</span> <span class="nx">day</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;周末&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;工作日&quot;</span><span class="p">)</span>
-    <span class="k">default</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;不合法&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">// 工作日</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>例子2：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span>
-    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">a</span>
-    <span class="k">switch</span>  <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">:</span>      <span class="c1">// case后面可以是表达式</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a &lt; b&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="nx">a</span> <span class="p">&gt;</span> <span class="nx">b</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;a &gt; b&quot;</span><span class="p">)</span>
-
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="c1">// 输出结果：1 a 2 b 3 c 4 d 5 e main函数</span>
 </code></pre></div>
 </td></tr></table>
                 
@@ -830,7 +669,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../01_go_basic_type/go_basic_type/" title="01 Go基础类型" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../10_go_interface/go_interface/" title="10 Go的接口" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -839,19 +678,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                01 Go基础类型
+                10 Go的接口
               </span>
             </div>
           </a>
         
         
-          <a href="../../03_array_and_slice/array_and_slice/" title="03 Go的数组和切片" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../12_go_channel/go_channel/" title="12 Go的信道" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                03 Go的数组和切片
+                12 Go的信道
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
