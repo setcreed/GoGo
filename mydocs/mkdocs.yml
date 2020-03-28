@@ -51,3 +51,6 @@ nav:
     - '08 GO的结构体': 'basics/08_go_struct/go_struct.md'
     - '09 Go的方法': 'basics/09_go_method/go_method.md'
     - '10 Go的接口': 'basics/10_go_interface/go_interface.md'
+    - '11 Go的协程': 'basics/11_go_routine/go_routine.md'
+    - '12 Go的信道': 'basics/12_go_channel/go_channel.md'
+    - '13 Go处理异常': 'basics/13_go_error/go_error.md'
